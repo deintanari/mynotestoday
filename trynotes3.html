@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Notes Today</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
+    <style>
+        body {
+            /* BACKGROUND LUAR */
+            background-color: #fce4ec; 
+            font-family: 'Poppins', sans-serif; /* Set font utama ke Poppins */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* AREA YANG AKAN DIFOTO (RASIO 3:4) */
+        .jurnal-box {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            
+            /* Setting Rasio 3:4 */
+            width: 400px; 
+            aspect-ratio: 3 / 4; 
+            
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+            border: 2px solid #ec407a;
+
+            /* GRID DI DALAM HASIL PNG */
+            background-image: 
+                linear-gradient(rgba(236, 64, 122, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(236, 64, 122, 0.05) 1px, transparent 1px);
+            background-size: 25px 25px;
+        }
+
+        /* 1. JUDUL: My Notes Today (RATA TENGAH & BOLD) */
+        h1 {
+            text-align: center;
+            font-weight: 600; /* Bold */
+            color: #ec407a;
+            font-size: 20px;
+            margin: 0 0 10px 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .divider {
+            height: 20px; /* Spasi setelah judul */
+        }
+
+        /* 2. Tanggal (POJOK KIRI ATAS SEBELUM ISI) */
+        .date-display {
+            text-align: left;
+            font-size: 13px;
+            color: #666;
+            font-weight: 400;
+            margin-bottom: 15px; /* Spasi setelah tanggal */
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* 3. Isi catatn */
+        .note-content {
+            flex-grow: 1; /* Mengisi ruang sisa */
+            width: 100%;
+            font-size: 15px;
+            line-height: 1.6;
+            color: #333;
+            outline: none;
+            white-space: pre-wrap;
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 20px; /* Spasi sebelum footer */
+        }
+
+        /* 4. FOOTER: Creted By Intan (RATA TENGAH & KECIL) */
+        .footer-text {
+            text-align: center;
+            font-size: 10px;
+            color: #ec407a;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* TOMBOL DOWNLOAD */
+        .btn-download {
+            background-color: #ec407a;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 25px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-download:hover {
+            background-color: #d81b60;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body onload="updateTanggal()">
+
+    <div class="jurnal-box" id="areaFoto">
+        <h1>My Notes Today</h1>
+        
+        <div class="divider"></div>
+
+        <div class="date-display" id="tanggalHariIni"></div>
+        
+        <div class="note-content" contenteditable="true" id="isiCatatan">Ketik catatanmu di sini!</div>
+        
+        <div class="footer-text">Created By Intan</div>
+    </div>
+
+🧚🏻‍♀️, [03/03/2026 06:45]
+<button class="btn-download" onclick="simpanJadiPng()">Unduh PNG</button>
+
+    <script>
+        // Update Tanggal Otomatis
+        function updateTanggal() {
+            const opsi = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const hariIni = new Date().toLocaleDateString('id-ID', opsi);
+            document.getElementById("tanggalHariIni").innerText = hariIni;
+        }
+
+        // Simpan ke PNG
+        function simpanJadiPng() {
+            const area = document.getElementById("areaFoto");
+            html2canvas(area, {
+                scale: 3, // Kualitas HD
+                backgroundColor: "#ffffff"
+            }).then(canvas => {
+                const link = document.createElement("a");
+                link.download = "MyNotes_ByIntan.png";
+                link.href = canvas.toDataURL("image/png");
+                link.click();
+            });
+        }
+    </script>
+
+</body>
+</html>
