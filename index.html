@@ -44,24 +44,36 @@
         /* AREA YANG AKAN DIFOTO (RASIO 3:4) */
 .jurnal-box {
     background: white;
-    padding: 40px;
+    padding: 25px;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 
-    /* Setting Rasio 3:4 */
-    width: 400px;
-    aspect-ratio: 3 / 4;
+    /* Biar tetep ada jarak di HP tapi rapi di Laptop */
+    width: calc(100% - 40px); 
+    max-width: 400px;
+    min-height: 450px;
     
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
+    margin: 20px 0;
+
+    /* INI KODE GRID YANG HILANG - MASUKKAN LAGI YA */
+    background-image: 
+        linear-gradient(rgba(236, 64, 122, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(236, 64, 122, 0.05) 1px, transparent 1px);
+    background-size: 25px 25px;
 }
-            /* GRID DI DALAM HASIL PNG */
-            background-image: 
-                linear-gradient(rgba(236, 64, 122, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(236, 64, 122, 0.05) 1px, transparent 1px);
-            background-size: 25px 25px;
-        }
+
+/* PASTIKAN WARNA FONT DI h1 TETAP PINK */
+h1 {
+    text-align: center;
+    font-weight: 600;
+    color: #ec407a; /* Warna pink favoritmu */
+    font-size: 22px; 
+    margin: 0 0 10px 0;
+    font-family: 'Poppins', sans-serif;
+}
 
         /* 1. JUDUL: My Notes Today (RATA TENGAH & BOLD) */
         h1 {
@@ -180,6 +192,7 @@
 </body>
 
 </html>
+
 
 
 
