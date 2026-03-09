@@ -42,20 +42,21 @@
         }
 
         /* AREA YANG AKAN DIFOTO (RASIO 3:4) */
-        .jurnal-box {
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            
-            /* Setting Rasio 3:4 */
-            width: 400px; 
-            aspect-ratio: 3 / 4; 
-            
-            display: flex;
-            flex-direction: column;
-            box-sizing: border-box;
+.jurnal-box {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 
+    /* Agar estetik: Lebar otomatis 90% di HP, tapi maksimal 400px saja */
+    width: 90%; 
+    max-width: 400px;
+    aspect-ratio: 3 / 4;
+    
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
             /* GRID DI DALAM HASIL PNG */
             background-image: 
                 linear-gradient(rgba(236, 64, 122, 0.05) 1px, transparent 1px),
@@ -180,6 +181,7 @@
 </body>
 
 </html>
+
 
 
 
